@@ -45,7 +45,11 @@ function setHorn() {
     // airhorn settings for selected horn
     var selectedHorn = selectOptions.value;
 
-    if (selectedHorn == "air-horn") {
+    if (selectedHorn == "select") {
+        hornImg.src = "assets/images/no-image.png";
+        audio.src = "";
+    }
+    else if (selectedHorn == "air-horn") {
         hornImg.src = "assets/images/air-horn.svg";                    
         audio.src = "assets/audio/air-horn.mp3";
     }
@@ -84,13 +88,14 @@ function setAudio() {
 
 /* plays audio of horn */
 function playSound() {
-    audio.play();
-
     var selectedHorn = selectOptions.value;
     // if party horn is selected, add confetti
     if (selectedHorn == "party-horn") {
         const jsConfetti = new JSConfetti();
         jsConfetti.addConfetti();
+    }
+    if (selectedHorn != "select") {
+        audio.play();
     }
 }
 
