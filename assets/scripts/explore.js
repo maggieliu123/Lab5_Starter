@@ -15,10 +15,12 @@ var voiceList = synthesis.getVoices();
 var selectVoice = document.getElementById('voice-select');
 var talkButton = document.querySelector('button');
 var inputText = document.getElementById('text-to-speak');
+var face = document.querySelector('img');
 
 ///////////////////////// EVENT LISTENERS //////////////////////////////////////
 
 talkButton.addEventListener('click', speak);
+// talkButton.addEventListener('click', changeFace);
 
 /////////////////////////// METHODS //////////////////////////////////////
 
@@ -49,6 +51,17 @@ function speak() {
         }
     }
     synthesis.speak(speech);
+    setInterval(changeFace, 100);
+    
+}
+
+function changeFace() {
+    if (synthesis.speaking) {
+        face.src = "assets/images/smiling-open.png";
+    }
+    else {
+        face.src = "assets/images/smiling.png";
+    }
 }
 
 function test() {
